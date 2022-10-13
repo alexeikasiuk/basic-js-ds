@@ -16,28 +16,22 @@ class BinarySearchTree {
 
     function sort(newNode, node) {
       if (newNode.data < node.data) {
-        if (!node.left) {
-          node.left = newNode;
-        } else {
+        if (!node.left) node.left = newNode;
+        else {
           node = node.left;
           sort(newNode, node);
         }
       } else if (newNode.data > node.data) {
-        if (!node.right) {
-          node.right = newNode;
-        } else {
+        if (!node.right) node.right = newNode;
+        else {
           node = node.right;
           sort(newNode, node);
         }
       }
     }
 
-    if (!this.rootNode) {
-      this.rootNode = newNode;
-    } else {
-      sort(newNode, this.rootNode);
-      console.log(1);
-    }
+    if (!this.rootNode) this.rootNode = newNode;
+    else sort(newNode, this.rootNode);
   }
 
   has(data) {
@@ -45,19 +39,11 @@ class BinarySearchTree {
       if (node.data === data) return true;
       else {
         if (data < node.data) {
-          if (!node.left) {
-            return false;
-          } else {
-            node = node.left;
-            return isEqual(node, data);
-          }
+          if (!node.left) return false;
+          else return isEqual(node.left, data);
         } else {
-          if (!node.right) {
-            return false;
-          } else {
-            node = node.right;
-            return isEqual(node, data);
-          }
+          if (!node.right) return false;
+          else return isEqual(node.right, data);
         }
       }
     }
